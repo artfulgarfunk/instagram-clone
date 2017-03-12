@@ -35,6 +35,13 @@ class PostsController < ApplicationController
     flash[:success] = 'Your post has been updated!'
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path
+    flash[:success] = 'Post deleted! No one needs to know'
+  end
+
   private
 
   def params_for_post
