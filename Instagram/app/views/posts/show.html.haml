@@ -1,3 +1,4 @@
-%h1 a nice new post
+%h1 a nice individual view
 = image_tag @post.image.url(:medium)
 = @post.caption
+= link_to "Edit", edit_post_path
