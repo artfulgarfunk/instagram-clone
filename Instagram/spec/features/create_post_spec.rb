@@ -19,5 +19,4 @@ feature 'Creating posts' do
     click_button 'Create Post'
     expect(page).to have_content('Stop! You have to upload an image!')
   end
-
 end
