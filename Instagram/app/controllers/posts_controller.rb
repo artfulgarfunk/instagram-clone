@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, :except => [:index]
+  before_action :own_post, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.all
@@ -41,6 +42,14 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
     flash[:success] = 'Post deleted! No one needs to know'
+  end
+
+  def own_post
+    @post = Post.find(params[:id])
+    unless current_user == @post.user
+      flash[:alert] = "Go away, this is not your post"
+      redirect_to root_path
+    end
   end
 
   private
