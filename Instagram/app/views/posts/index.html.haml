@@ -1,7 +1,7 @@
 %h1 Instagram-Clone
 %ul
   - if user_signed_in?
-    Hello, you are now signed in
+    Hello, you are now signed in, #{current_user.user_name}
     %li
       = link_to "New Post", new_post_path
     %li

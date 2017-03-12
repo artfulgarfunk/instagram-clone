@@ -1,4 +1,8 @@
 %h1 a nice individual view
 = image_tag @post.image.url(:medium)
 = @post.caption
-= link_to "Edit", edit_post_path
+- if current_user == @post.user
+  = link_to "Edit", edit_post_path
+- else
+  %br
+  you can't edit this
