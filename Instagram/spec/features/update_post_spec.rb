@@ -1,7 +1,7 @@
 feature 'Update Post' do
   scenario "Users can udpate a previously created post" do
     sign_up
-    a_post = create(:post, caption: "This is a testing post")
+    new_post
     visit '/'
     find(:xpath, "//a[contains(@href,'posts/1')]").click
     click_link_or_button "Edit"

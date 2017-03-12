@@ -1,14 +1,12 @@
 require 'rails_helper.rb'
 require_relative '../helpers/sign_up_helper.rb'
+require_relative '../helpers/new_post_helper.rb'
 
 feature 'Creating posts' do
 
   scenario 'can create a post' do
     sign_up
-    click_link 'New Post'
-    attach_file('Image', "spec/files/images/chai_tea.jpg")
-    fill_in 'Caption', with: 'I love #tea'
-    click_button 'Create Post'
+    new_post
     expect(page).to have_content('#tea')
     expect(page).to have_css("img[src*='chai_tea.jpg']")
   end
