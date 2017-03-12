@@ -4,6 +4,7 @@
 
 feature 'Individual Post' do
   scenario "Users can see an individual post on it's own page" do
+    sign_up
     a_post = create(:post, caption: "This is a test post")
     visit '/'
     find(:xpath, "//a[contains(@href,'posts/1')]").click
