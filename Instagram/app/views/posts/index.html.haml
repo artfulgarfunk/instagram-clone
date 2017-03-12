@@ -1,6 +1,17 @@
 %h1 Instagram-Clone
-= link_to "New Post", new_post_path
-%br/
+%ul
+  - if user_signed_in?
+    Hello, you are now signed in
+    %li
+      = link_to "New Post", new_post_path
+    %li
+      = link_to "Logout", destroy_user_session_path, method: :delete
+  - else
+    Please log in or register
+    %li
+      = link_to "Login", new_user_session_path
+    %li
+      = link_to "Register", new_user_registration_path
 -@posts.each do |post|
   =link_to (image_tag post.image.url(:medium)), post_path(post)
   %br/

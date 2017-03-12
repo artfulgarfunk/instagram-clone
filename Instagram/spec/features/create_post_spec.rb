@@ -1,9 +1,10 @@
 require 'rails_helper.rb'
+require_relative '../helpers/sign_up_helper.rb'
 
 feature 'Creating posts' do
 
   scenario 'can create a post' do
-    visit '/'
+    sign_up
     click_link 'New Post'
     attach_file('Image', "spec/files/images/chai_tea.jpg")
     fill_in 'Caption', with: 'I love #tea'
@@ -13,6 +14,7 @@ feature 'Creating posts' do
   end
 
   it 'needs an image to create a post' do
+    sign_up
     visit '/'
     click_link 'New Post'
     fill_in 'Caption', with: 'Eppendorf'
