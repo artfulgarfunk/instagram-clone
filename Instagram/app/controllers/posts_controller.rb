@@ -9,7 +9,13 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(params_for_post)
-    redirect_to @post
+      if @post.save
+        flash[:success] = 'Your post has been uploaded! Congratulations!'
+        redirect_to @post
+      else
+        flash[:alert] = 'Stop! You have to upload an image!'
+        render :new
+      end
     # creates a no show method error. the redirect_to calls a show method, evidently.
   end
 
@@ -21,6 +27,7 @@ class PostsController < ApplicationController
 
   def params_for_post
     params.require(:post).permit(:caption, :image)
+    # simply what parameters are permitted, in this case, the params are caption and image
   end
 
 end
