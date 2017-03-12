@@ -1,5 +1,6 @@
 feature 'Delete Post' do
   scenario 'a user can delete a post that they have uploaded' do
+    sign_up
     a_post = create(:post, caption: "This is a testing post")
     visit ('/')
     find(:xpath, "//a[contains(@href,'posts/1')]").click
