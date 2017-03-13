@@ -44,6 +44,9 @@ class PostsController < ApplicationController
     flash[:success] = 'Post deleted! No one needs to know'
   end
 
+
+  private
+
   def own_post
     @post = Post.find(params[:id])
     unless current_user == @post.user
@@ -51,8 +54,6 @@ class PostsController < ApplicationController
       redirect_to root_path
     end
   end
-
-  private
 
   def params_for_post
     params.require(:post).permit(:caption, :image)

@@ -17,3 +17,14 @@
   %br/
   =post.caption
   %br/
+  - if post.comments
+    - post.comments.each do |comment|
+      .comment
+        .user-name
+          = comment.user.user_name
+          =':'
+          = comment.content
+  .comment-form
+    = form_for [post, post.comments.new] do |f|
+      = f.text_field :content, id:"submit_comment", placeholder: 'Add a comment please...'
+      = f.button :Submit
