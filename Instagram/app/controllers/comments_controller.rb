@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
 def create
   @comment = @post.comments.build(comment_params)
   @comment.user_id = current_user.id
-
   if @comment.save
     flash[:success] = "You have successfully commented!"
     redirect_to root_path
