@@ -1,11 +1,10 @@
-%h1 Instagram-Clone
-%ul
--@posts.each do |post|
-  .post
-    .post-head
-      .postedby
-        =post.user.user_name
-        posted this!
+.posts-wrapper.row
+  -@posts.each do |post|
+    .post
+      .post-head
+        .postedby
+          =post.user.user_name
+          posted this!
       .image.center-block
         =link_to (image_tag post.image.url(:medium)), post_path(post)
         %br/
@@ -20,5 +19,5 @@
                 = comment.content
         .comment-form
           = form_for [post, post.comments.new] do |f|
-            = f.text_field :content, id:"submit_comment", placeholder: 'Add a comment please...'
+            = f.text_field :content, id:"submit_comment", placeholder: 'Comment...'
             = f.button :Submit
