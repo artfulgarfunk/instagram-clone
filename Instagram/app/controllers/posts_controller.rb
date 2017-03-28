@@ -19,7 +19,6 @@ class PostsController < ApplicationController
         flash[:alert] = 'Stop! You have to upload an image!'
         render :new
       end
-    # creates a no show method error. the redirect_to calls a show method, evidently.
   end
 
   def show

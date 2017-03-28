@@ -1,30 +1,24 @@
 %h1 Instagram-Clone
 %ul
-  - if user_signed_in?
-    Hello, you are now signed in, #{current_user.user_name}
-    %li
-      = link_to "New Post", new_post_path
-    %li
-      = link_to "Logout", destroy_user_session_path, method: :delete
-  - else
-    Please log in or register
-    %li
-      = link_to "Login", new_user_session_path
-    %li
-      = link_to "Register", new_user_registration_path
 -@posts.each do |post|
-  =link_to (image_tag post.image.url(:medium)), post_path(post)
-  %br/
-  =post.caption
-  %br/
-  - if post.comments
-    - post.comments.each do |comment|
-      .comment
-        .user-name
-          = comment.user.user_name
-          =':'
-          = comment.content
-  .comment-form
-    = form_for [post, post.comments.new] do |f|
-      = f.text_field :content, id:"submit_comment", placeholder: 'Add a comment please...'
-      = f.button :Submit
+  .post
+    .post-head
+      .postedby
+        =post.user.user_name
+        posted this!
+      .image.center-block
+        =link_to (image_tag post.image.url(:medium)), post_path(post)
+        %br/
+        =post.caption
+        %br/
+        - if post.comments
+          - post.comments.each do |comment|
+            .comment
+              .user-name
+                = comment.user.user_name
+                =':'
+                = comment.content
+        .comment-form
+          = form_for [post, post.comments.new] do |f|
+            = f.text_field :content, id:"submit_comment", placeholder: 'Add a comment please...'
+            = f.button :Submit
