@@ -40,7 +40,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
-gem 'web-console', '>= 3.3.0'
 gem 'listen', '~> 3.0.5'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring'
@@ -57,7 +56,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'sqlite3'
+  gem 'web-console', '>= 3.3.0'
 end
 
 group :production do
